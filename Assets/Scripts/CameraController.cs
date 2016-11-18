@@ -3,18 +3,22 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject background;
+    [SerializeField]
+    private GameObject background;
+    [SerializeField]
+    private float cameraBuffer = 0;
 
     void Awake()
     {
         Camera camera = gameObject.GetComponent<Camera>();
-        FitCameraToSprite(ref camera, background);
+        FitCameraToSprite(ref camera, background, cameraBuffer);
     }
 
     // camera is adjusted to:
     //      - be centered on the sprite
     //      - tightly fit the limiting dimension of the sprite (width or height)
-    private void FitCameraToSprite(ref Camera camera, GameObject obj)
+    //      - have 'buffer' units of background around the tightest dimension
+    private void FitCameraToSprite(ref Camera camera, GameObject obj, float buffer = 0f)
     {
         CenterCameraOnSprite(ref camera, obj);
 
@@ -34,6 +38,7 @@ public class CameraController : MonoBehaviour
         {                                       // snap camera to sprite width
             camera.orthographicSize = (spriteUnitWidth / camera.aspect) / 2f;
         }
+        camera.orthographicSize += buffer;
     }
 
     private void CenterCameraOnSprite(ref Camera camera, GameObject obj)
