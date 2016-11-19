@@ -1,0 +1,4 @@
+File:   GameManager.cs
+Source: 2D Roguelike tutorial Unity tutorial
+Link:   https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial
+Extent: Borrowed singleton pattern code and general idea; modified for own use
