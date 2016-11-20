@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010386886356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0032580318, y: 0.03541694, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -71,10 +71,12 @@ MonoBehaviour:
   paddleSpacing: 0.2
   backgroundWidth: 10.24
   backgroundHeight: 6.2
-  brick: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c, type: 2}
-  powerupBrick: {fileID: 0}
-  paddle: {fileID: 0}
-  background: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a, type: 2}
+  brickPrefab: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c,
+    type: 2}
+  powerupBrickPrefab: {fileID: 0}
+  paddlePrefab: {fileID: 0}
+  backgroundPrefab: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a,
+    type: 2}
 --- !u!114 &114000013870018598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,5 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5d59184575e4a429ccb810a12b9f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a, type: 2}
-  cameraBuffer: 0
+  edgeBuffer: 0.6
