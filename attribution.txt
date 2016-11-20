@@ -7,6 +7,11 @@ Note: I completed 1.5 of Unity's "Learn Tutorials":
       is specified below.
 
 File:   GameManager.cs
+Extent: Borrowed singleton pattern code and general idea; modified for own use
 Source: 2D Roguelike tutorial Unity tutorial
 Link:   https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial
-Extent: Borrowed singleton pattern code and general idea; modified for own use
+
+File:   PaddleController.cs
+Extent: In function Move(), the idea to contatenate "Vertical" + (int)playerID.
+Source: Unity "Tanks tutorial"
+Link:   https://unity3d.com/learn/tutorials/projects/tanks-tutorial/tank-creation-control?playlist=20081

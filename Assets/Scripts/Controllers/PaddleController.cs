@@ -15,14 +15,13 @@ public class PaddleController : MonoBehaviour
 
     private void Update()
     {
+        Move();
+    }
+
+    private void Move()
+    {
         float moveVertical = Input.GetAxis("Vertical" + (int)playerID);
         moveVertical *= speed * Time.deltaTime;
         gameObject.transform.Translate(0f, moveVertical, 0f);
-    }
-
-    public void MoveByForce(Vector3 force)
-    {
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-        rb.AddForce(force, ForceMode2D.Impulse);
-    }
+    } 
 }

@@ -22,7 +22,7 @@ GameObject:
   - 212: {fileID: 212000012610739638}
   - 61: {fileID: 61000010739972934}
   - 114: {fileID: 114000011067994416}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}

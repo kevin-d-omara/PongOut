@@ -245,7 +245,7 @@ GameObject:
   - 50: {fileID: 1600111257}
   - 58: {fileID: 1600111256}
   - 114: {fileID: 1600111260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
