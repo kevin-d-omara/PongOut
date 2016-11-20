@@ -95,7 +95,8 @@ public class TableManager : MonoBehaviour
         }
     }
 
-    // Sets object to specific size in Unity units.
+    // Sets object to specific size in Unity units via adjusting its scale.
+    // Note: this affects the BoxCollider2D too.
     // Ex: SetObjectSize2D(brick, .2f, .76f) sets 'brick' to .2 units wide and
     //     .76 units tall, regardless of prior scale.
     private void SetObjectSize2D(GameObject obj, float xUnits, float yUnits)
