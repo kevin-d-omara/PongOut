@@ -6,6 +6,7 @@ public enum SideTB { Top = 1, Bottom = -1 };
 
 public class TableManager : MonoBehaviour
 {
+    // brick setup settings
     public int numRows = 2;   // depth (i.e. horizontal count of bricks)
     public int numCols = 8;   // vertical count of bricks
                                         // Unity unit spacing between:
@@ -15,17 +16,22 @@ public class TableManager : MonoBehaviour
     public float wallSpacing = 0.1f;    // bricks   <> table edge (vertical)
     public float paddleSpacing = 0.2f;  // paddle <> front row
 
+    // table & entity dimensions
     public float brickWidth = 0.2f;
     public float paddleWidth = 0.22f;
     public float paddleHeight = 1f;
     public float backgroundWidth = 10.24f;
     public float backgroundHeight = 6.2f;
 
+    // fraction of the goal which will not be targetted during a ball spawn
+    // i.e. top & bottom 1/6th
+    public float inverseBallSpawnDeadzone = 6f;
 
     // prefabs
     public GameObject brickPrefab;
     public GameObject powerupBrickPrefab;
     public GameObject paddlePrefab;
+    public GameObject ballPrefab;
     public GameObject backgroundPrefab;
     public GameObject singleEdgePrefab;
 
@@ -53,10 +59,6 @@ public class TableManager : MonoBehaviour
         // setup bricks for both players
         paddle[0] = LayBrickSetAndPaddle(SideLR.Left);
         paddle[1] = LayBrickSetAndPaddle(SideLR.Right);
-
-        // place paddles
-        // left
-        // right
     }
 
     // Creates a set of bricks + paddle on the left or right side of the table.
@@ -123,5 +125,33 @@ public class TableManager : MonoBehaviour
         float endScaleY = yUnits / size.y;
 
         obj.transform.localScale = new Vector3(endScaleX, endScaleY, 1f);
+    }
+
+    // A new ball is created at the center of the table:
+    //      - moving away from last player to score
+    //      - aimed randomly, but such that it will not reach the edges of the
+    //        player's goal (see inverseBallSpawnDeadzone)
+    public void SpawnBall(PlayerID lastPlayerToScore)
+    {
+        GameObject ball = Instantiate(ballPrefab);
+
+        // ball spawns moving away from last player to score
+        float dir = lastPlayerToScore == PlayerID.One ? 1f : -1f;
+        float speedX = ball.GetComponent<BallController>().speed * dir;
+
+        // randomize starting angle such that:
+        //      - ball will never reach upper/lower fraction of goal specified
+        //        by 'inverseBallSpawnDeadzone' (i.e. upper/lower 1/6th)
+        // note: calculated using two similar triangles made from:
+        //      - w = speedX, h = maxSpeedY
+        //      - w = backgroundWidth/2, h = backgroundHeight/2 * (1 - deadzone)
+        //      - solving for maxSpeedY
+        float deadzone = 1f / inverseBallSpawnDeadzone;
+        float inverseAspect = backgroundHeight / backgroundWidth;
+        float maxSpeedY = (1f - deadzone) * inverseAspect * speedX;
+        float speedY = Random.Range(-maxSpeedY, maxSpeedY);
+
+        Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector2(speedX, speedY));
     }
 }

@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     private TableManager tableManager;
     private CameraController cameraController;
 
+    private PlayerID lastPlayerToScore = PlayerID.One;
+
     void Awake()
     {
         // enforce singleton pattern for GameManager
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
 
         player[0] = new Player(PlayerID.One, tableManager.paddle[0]);
         player[1] = new Player(PlayerID.Two, tableManager.paddle[1]);
+
+        tableManager.SpawnBall(lastPlayerToScore);
     }
     
 }

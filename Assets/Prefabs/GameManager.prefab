@@ -76,15 +76,20 @@ MonoBehaviour:
   paddleHeight: 1
   backgroundWidth: 10.24
   backgroundHeight: 6.2
+  inverseBallSpawnDeadzone: 4
   brickPrefab: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c,
     type: 2}
   powerupBrickPrefab: {fileID: 0}
   paddlePrefab: {fileID: 1000011813246496, guid: 68615c488c3140f4aa88f3527a42ddb9,
     type: 2}
+  ballPrefab: {fileID: 1000010473333158, guid: b638d66584a8b9d4694ffb63c0c35fff, type: 2}
   backgroundPrefab: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a,
     type: 2}
   singleEdgePrefab: {fileID: 1000011383623874, guid: 048a2480c17c7e742b65ea80df126d1e,
     type: 2}
+  paddle:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114000013870018598
 MonoBehaviour:
   m_ObjectHideFlags: 1
