@@ -68,7 +68,10 @@ MonoBehaviour:
   numCols: 8
   rowSpacing: 0.1
   colSpacing: 0.04
+  goalSpacing: 0.1
+  edgeSpacing: 0.1
   paddleSpacing: 0.2
+  brickWidth: 0.2
   backgroundWidth: 10.24
   backgroundHeight: 6.2
   brickPrefab: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c,
