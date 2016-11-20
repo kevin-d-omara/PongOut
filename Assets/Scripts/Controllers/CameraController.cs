@@ -3,18 +3,21 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    public float cameraBuffer = 0f;
+    public float edgeBuffer = 0f;
 
     private Camera myCamera;
-    private GameObject spriteObject;
+    private GameObject viewedObject;
 
-    // Use to initialize or change the camera
-    public void SetupCamera(ref Camera camera, GameObject spriteObj)
+    void Awake()
     {
-        myCamera = camera;
-        spriteObject = spriteObj;
-        FitCameraToSprite(ref myCamera, spriteObject, cameraBuffer);
+        myCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
+
+    public void SetViewedObject(GameObject spriteObj)
+    {
+        viewedObject = spriteObj;
+        FitCameraToSprite(ref myCamera, viewedObject, edgeBuffer);
+    } 
 
     // Adjusts camera to:
     //      - be centered on the sprite

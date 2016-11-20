@@ -41,11 +41,7 @@ public class GameManager : MonoBehaviour
     void InitGame()
     {
         tableManager.SetupScene();
-
-        // Setup camera - snap zoom to background
-        Camera mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        GameObject background = tableManager.background;
-        cameraController.SetupCamera(ref mainCamera, background);
+        cameraController.SetViewedObject(tableManager.GetBackground());
     }
     
 }
