@@ -1,3 +1,11 @@
+Note: I completed 1.5 of Unity's "Learn Tutorials":
+        - 2D UFO tutorial (9/9)
+        - 2D Roguelike tutorial (6/14)
+      Thus, certain aspects of my project (i.e. use of ObjectManagers and
+      ObjectControllers) were learned/inspired from these tutorials. However, no
+      code was explicitly copied or even "reverse-engineered", other than what
+      is specified below.
+
 File:   GameManager.cs
 Source: 2D Roguelike tutorial Unity tutorial
 Link:   https://unity3d.com/learn/tutorials/projects/2d-roguelike-tutorial
