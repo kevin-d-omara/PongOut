@@ -3,18 +3,20 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject background;
-    [SerializeField]
-    private float cameraBuffer = 0;
+    public float cameraBuffer = 0f;
 
-    void Awake()
+    private Camera myCamera;
+    private GameObject spriteObject;
+
+    // Use to initialize or change the camera
+    public void SetupCamera(ref Camera camera, GameObject spriteObj)
     {
-        Camera camera = gameObject.GetComponent<Camera>();
-        FitCameraToSprite(ref camera, background, cameraBuffer);
+        myCamera = camera;
+        spriteObject = spriteObj;
+        FitCameraToSprite(ref myCamera, spriteObject, cameraBuffer);
     }
 
-    // camera is adjusted to:
+    // Adjusts camera to:
     //      - be centered on the sprite
     //      - tightly fit the limiting dimension of the sprite (width or height)
     //      - have 'buffer' units of background around the tightest dimension
@@ -22,12 +24,12 @@ public class CameraController : MonoBehaviour
     {
         CenterCameraOnSprite(ref camera, obj);
 
-        Sprite sprite = obj.GetComponent<SpriteRenderer>().sprite;  
+        Sprite sprite = obj.GetComponent<SpriteRenderer>().sprite;
         Bounds bounds = sprite.bounds;
         Vector3 scale = obj.transform.lossyScale;   // account for scale factor
 
-        float spriteUnitHeight  = bounds.size.y * scale.y;
-        float spriteUnitWidth   = bounds.size.x * scale.x;
+        float spriteUnitHeight = bounds.size.y * scale.y;
+        float spriteUnitWidth = bounds.size.x * scale.x;
         float spriteAspectRatio = spriteUnitWidth / spriteUnitHeight;
 
         if (spriteAspectRatio <= camera.aspect) // spriteAspectRatio is taller

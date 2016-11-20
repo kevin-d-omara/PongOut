@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010459156318}
   - 114: {fileID: 114000010331832162}
   - 114: {fileID: 114000011491195302}
+  - 114: {fileID: 114000013870018598}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -67,6 +68,23 @@ MonoBehaviour:
   numCols: 8
   rowSpacing: 0.1
   colSpacing: 0.04
+  paddleSpacing: 0.2
+  backgroundWidth: 10.24
+  backgroundHeight: 6.2
   brick: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c, type: 2}
   powerupBrick: {fileID: 0}
   paddle: {fileID: 0}
+  background: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a, type: 2}
+--- !u!114 &114000013870018598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010386886356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5d59184575e4a429ccb810a12b9f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a, type: 2}
+  cameraBuffer: 0

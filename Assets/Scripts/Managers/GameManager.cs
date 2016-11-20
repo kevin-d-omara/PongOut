@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;  // singlton GameManager
     
     private TableManager tableManager;
+    private CameraController cameraController;
 
     void Awake()
     {
@@ -28,14 +29,23 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);        // all other instances get destroyed
         }
         DontDestroyOnLoad(gameObject);  // preserve parent GameObject to preserve the singleton
+    }
 
+    void Start()
+    {
         tableManager = GetComponent<TableManager>();
+        cameraController = GetComponent<CameraController>();
         InitGame();
     }
 
     void InitGame()
     {
         tableManager.SetupScene();
+
+        // Setup camera - snap zoom to background
+        Camera mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        GameObject background = tableManager.background;
+        cameraController.SetupCamera(ref mainCamera, background);
     }
     
 }
