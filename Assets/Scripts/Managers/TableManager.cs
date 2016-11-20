@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SideLR { Left = -1, Right = 1 };
+public enum SideTB { Top = 1, Bottom = -1 };
+
 public class TableManager : MonoBehaviour
 {
     public int numRows = 2;   // depth (i.e. horizontal count of bricks)
@@ -26,7 +29,6 @@ public class TableManager : MonoBehaviour
 
     private GameObject background;
     public GameObject GetBackground() { return background; }
-
     private GameObject topWall;
     private GameObject botWall;
 
@@ -38,30 +40,17 @@ public class TableManager : MonoBehaviour
         background.transform.position = new Vector3(0f, 0f, 0f);
 
         // setup top/bottom border ---------------------------------------------
-        Vector2[] points;
         float halfWidth  = backgroundWidth / 2f;
         float halfHeight = backgroundHeight / 2f;
 
         topWall = Instantiate(singleEdgePrefab);
-        points = topWall.GetComponent<EdgeCollider2D>().points;
-        points[0].x = -halfWidth;
-        points[0].y = halfHeight;
-        points[1].x = halfWidth;
-        points[1].y = halfHeight;
-        topWall.GetComponent<EdgeCollider2D>().points = points;
-
+        topWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Top);
         botWall = Instantiate(singleEdgePrefab);
-        points = topWall.GetComponent<EdgeCollider2D>().points;
-        points[0].x = -halfWidth;
-        points[0].y = -halfHeight;
-        points[1].x = halfWidth;
-        points[1].y = -halfHeight;
-        botWall.GetComponent<EdgeCollider2D>().points = points;
+        botWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Bottom);
 
-        // ---------------------------------------------------------------------
-
-        LayBrickSet(true);
-        LayBrickSet(false);
+        // setup bricks for both players
+        LayBrickSet(SideLR.Left);
+        LayBrickSet(SideLR.Right);
 
         // place paddles
         // left
@@ -72,9 +61,9 @@ public class TableManager : MonoBehaviour
     // A brick set consists of:
     //      - 'numRows' x 'numCols' bricks of type 'brickPrefab'
     //      - 1 brick of type 'powerupBrickPrefab' in the center of the back row
-    private void LayBrickSet(bool onRightSide)
+    private void LayBrickSet(SideLR side)
     {
-        float dir = onRightSide ? 1f : -1f;
+        float dir = (side == SideLR.Left) ? -1f : 1f;
 
         // determine brick height by fitting to the parameters:
         //      - # bricks, spacing between bricks, & spacing to table edge

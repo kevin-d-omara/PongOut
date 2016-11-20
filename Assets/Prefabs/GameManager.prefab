@@ -65,11 +65,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numRows: 2
-  numCols: 8
+  numCols: 7
   rowSpacing: 0.1
   colSpacing: 0.04
   goalSpacing: 0.1
-  edgeSpacing: 0.1
+  wallSpacing: 0.1
   paddleSpacing: 0.2
   brickWidth: 0.2
   backgroundWidth: 10.24

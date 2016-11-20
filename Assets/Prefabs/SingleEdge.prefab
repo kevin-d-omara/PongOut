@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013276348132}
   - 68: {fileID: 68000010081012246}
+  - 114: {fileID: 114000013015271172}
   m_Layer: 0
   m_Name: SingleEdge
   m_TagString: Untagged
@@ -55,3 +56,14 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.5, y: 0}
   - {x: 0.5, y: 0}
+--- !u!114 &114000013015271172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011383623874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30882c12ed29b2045bb54c4213e58901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
