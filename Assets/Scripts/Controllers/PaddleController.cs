@@ -16,6 +16,12 @@ public class PaddleController : MonoBehaviour
     private void Update()
     {
         float moveVertical = Input.GetAxis("Vertical" + (int)playerID);
+
+        if (Mathf.Abs(moveVertical) > 0f)
+        {
+            print(moveVertical);
+        }
+
         moveVertical *= speed * Time.deltaTime;
         gameObject.transform.Translate(0f, moveVertical, 0f);
     }
