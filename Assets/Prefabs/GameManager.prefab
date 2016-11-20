@@ -80,6 +80,8 @@ MonoBehaviour:
   paddlePrefab: {fileID: 0}
   backgroundPrefab: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a,
     type: 2}
+  singleEdgePrefab: {fileID: 1000011383623874, guid: 048a2480c17c7e742b65ea80df126d1e,
+    type: 2}
 --- !u!114 &114000013870018598
 MonoBehaviour:
   m_ObjectHideFlags: 1
