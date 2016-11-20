@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
         myCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
-    public void SetViewedObject(GameObject spriteObj)
+    public void SetViewedObjectTo(GameObject spriteObj)
     {
         viewedObject = spriteObj;
         FitCameraToSprite(ref myCamera, viewedObject, edgeBuffer);

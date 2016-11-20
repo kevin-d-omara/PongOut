@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     void InitGame()
     {
         tableManager.SetupScene();
-        cameraController.SetViewedObject(tableManager.GetBackground());
+        cameraController.SetViewedObjectTo(tableManager.GetBackground());
     }
     
 }
