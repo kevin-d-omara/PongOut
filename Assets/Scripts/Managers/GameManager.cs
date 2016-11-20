@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum PlayerID { One = 1, Two = 2 };
+
 /* GameManager handles
  *      - scene setup (via TableManager)
  *          - bricks
@@ -13,7 +15,23 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;  // singlton GameManager
-    
+    public class Player
+    {
+        public int score;
+        public PlayerID playerID;
+        public GameObject paddle;
+
+        public Player(PlayerID playerID, GameObject paddle)
+        {
+            score = 0;
+            this.playerID = playerID;
+            this.paddle = paddle;
+
+            paddle.GetComponent<PaddleController>().SetupPaddle(playerID);
+        }
+    }
+
+    private Player[] player = new Player[2];
     private TableManager tableManager;
     private CameraController cameraController;
 
@@ -35,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         tableManager = GetComponent<TableManager>();
         cameraController = GetComponent<CameraController>();
+
         InitGame();
     }
 
@@ -42,6 +61,9 @@ public class GameManager : MonoBehaviour
     {
         tableManager.SetupScene();
         cameraController.SetViewedObjectTo(tableManager.GetBackground());
+
+        player[0] = new Player(PlayerID.One, tableManager.paddle[0]);
+        player[1] = new Player(PlayerID.Two, tableManager.paddle[1]);
     }
     
 }

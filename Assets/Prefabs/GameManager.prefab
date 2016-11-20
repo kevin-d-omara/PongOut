@@ -70,14 +70,17 @@ MonoBehaviour:
   colSpacing: 0.04
   goalSpacing: 0.1
   wallSpacing: 0.1
-  paddleSpacing: 0.2
+  paddleSpacing: 0.3
   brickWidth: 0.2
+  paddleWidth: 0.22
+  paddleHeight: 1
   backgroundWidth: 10.24
   backgroundHeight: 6.2
   brickPrefab: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c,
     type: 2}
   powerupBrickPrefab: {fileID: 0}
-  paddlePrefab: {fileID: 0}
+  paddlePrefab: {fileID: 1000011813246496, guid: 68615c488c3140f4aa88f3527a42ddb9,
+    type: 2}
   backgroundPrefab: {fileID: 1000013156270468, guid: 20c7f42ea682a9e45b6ceea22835617a,
     type: 2}
   singleEdgePrefab: {fileID: 1000011383623874, guid: 048a2480c17c7e742b65ea80df126d1e,

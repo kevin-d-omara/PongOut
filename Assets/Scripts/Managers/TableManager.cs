@@ -16,6 +16,8 @@ public class TableManager : MonoBehaviour
     public float paddleSpacing = 0.2f;  // paddle <> front row
 
     public float brickWidth = 0.2f;
+    public float paddleWidth = 0.22f;
+    public float paddleHeight = 1f;
     public float backgroundWidth = 10.24f;
     public float backgroundHeight = 6.2f;
 
@@ -29,8 +31,8 @@ public class TableManager : MonoBehaviour
 
     private GameObject background;
     public GameObject GetBackground() { return background; }
-    private GameObject topWall;
-    private GameObject botWall;
+
+    public GameObject[] paddle = new GameObject[2];
 
     public void SetupScene()
     {
@@ -43,25 +45,25 @@ public class TableManager : MonoBehaviour
         float halfWidth  = backgroundWidth / 2f;
         float halfHeight = backgroundHeight / 2f;
 
-        topWall = Instantiate(singleEdgePrefab);
+        GameObject topWall = Instantiate(singleEdgePrefab);
         topWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Top);
-        botWall = Instantiate(singleEdgePrefab);
+        GameObject botWall = Instantiate(singleEdgePrefab);
         botWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Bottom);
 
         // setup bricks for both players
-        LayBrickSet(SideLR.Left);
-        LayBrickSet(SideLR.Right);
+        paddle[0] = LayBrickSetAndPaddle(SideLR.Left);
+        paddle[1] = LayBrickSetAndPaddle(SideLR.Right);
 
         // place paddles
         // left
         // right
     }
 
-    // Creates a set of bricks on the left or right side of the table.
+    // Creates a set of bricks + paddle on the left or right side of the table.
     // A brick set consists of:
     //      - 'numRows' x 'numCols' bricks of type 'brickPrefab'
     //      - 1 brick of type 'powerupBrickPrefab' in the center of the back row
-    private void LayBrickSet(SideLR side)
+    private GameObject LayBrickSetAndPaddle(SideLR side)
     {
         float dir = (side == SideLR.Left) ? -1f : 1f;
 
@@ -74,6 +76,7 @@ public class TableManager : MonoBehaviour
 
         float placementX = (backgroundWidth / 2f - goalSpacing - brickWidth / 2f) * dir;
 
+        // place brick set
         for (int i = 0; i < numRows; ++i)
         {
             float placementY = backgroundHeight / 2f - wallSpacing - brickHeight / 2f;
@@ -93,6 +96,17 @@ public class TableManager : MonoBehaviour
 
             placementX -= (brickWidth + rowSpacing) * dir;
         }
+
+        // place paddle
+        GameObject paddle = Instantiate(paddlePrefab);
+        SetObjectSize2D(paddle, paddleWidth, paddleHeight);
+
+        Vector3 paddlePos = paddle.transform.position;
+        float spacing = (paddleSpacing + paddleWidth / 2f) * -1;
+        paddlePos.x = placementX + (spacing + rowSpacing) * dir;
+
+        paddle.transform.position = paddlePos;
+        return paddle;
     }
 
     // Sets object to specific size in Unity units via adjusting its scale.
