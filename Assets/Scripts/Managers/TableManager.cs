@@ -9,7 +9,7 @@ public class TableManager : MonoBehaviour
     public float rowSpacing = 0.1f;     // row <> row
     public float colSpacing = 0.04f;    // column <> column
     public float goalSpacing = 0.1f;    // back row <> table edge (horizontal)
-    public float edgeSpacing = 0.1f;    // bricks   <> table edge (vertical)
+    public float wallSpacing = 0.1f;    // bricks   <> table edge (vertical)
     public float paddleSpacing = 0.2f;  // paddle <> front row
 
     public float brickWidth = 0.2f;
@@ -22,9 +22,13 @@ public class TableManager : MonoBehaviour
     public GameObject powerupBrickPrefab;
     public GameObject paddlePrefab;
     public GameObject backgroundPrefab;
+    public GameObject singleEdgePrefab;
 
     private GameObject background;
     public GameObject GetBackground() { return background; }
+
+    private GameObject topWall;
+    private GameObject botWall;
 
     public void SetupScene()
     {
@@ -32,6 +36,29 @@ public class TableManager : MonoBehaviour
         background = Instantiate(backgroundPrefab);
         SetObjectSize2D(background, backgroundWidth, backgroundHeight);
         background.transform.position = new Vector3(0f, 0f, 0f);
+
+        // setup top/bottom border ---------------------------------------------
+        Vector2[] points;
+        float halfWidth  = backgroundWidth / 2f;
+        float halfHeight = backgroundHeight / 2f;
+
+        topWall = Instantiate(singleEdgePrefab);
+        points = topWall.GetComponent<EdgeCollider2D>().points;
+        points[0].x = -halfWidth;
+        points[0].y = halfHeight;
+        points[1].x = halfWidth;
+        points[1].y = halfHeight;
+        topWall.GetComponent<EdgeCollider2D>().points = points;
+
+        botWall = Instantiate(singleEdgePrefab);
+        points = topWall.GetComponent<EdgeCollider2D>().points;
+        points[0].x = -halfWidth;
+        points[0].y = -halfHeight;
+        points[1].x = halfWidth;
+        points[1].y = -halfHeight;
+        botWall.GetComponent<EdgeCollider2D>().points = points;
+
+        // ---------------------------------------------------------------------
 
         LayBrickSet(true);
         LayBrickSet(false);
@@ -51,16 +78,16 @@ public class TableManager : MonoBehaviour
 
         // determine brick height by fitting to the parameters:
         //      - # bricks, spacing between bricks, & spacing to table edge
-        float edgeLoss = 2 * edgeSpacing;
+        float edgeLoss = 2 * wallSpacing;
         float inBetweenLoss = (numCols - 1) * colSpacing;
         float availableHeight = backgroundHeight - edgeLoss - inBetweenLoss;
         float brickHeight = availableHeight / numCols;
 
-        float placementX = (backgroundWidth / 2 - goalSpacing - brickWidth / 2) * dir;
+        float placementX = (backgroundWidth / 2f - goalSpacing - brickWidth / 2f) * dir;
 
         for (int i = 0; i < numRows; ++i)
         {
-            float placementY = backgroundHeight / 2 - edgeSpacing - brickHeight / 2;
+            float placementY = backgroundHeight / 2f - wallSpacing - brickHeight / 2f;
 
             for (int j = 0; j < numCols; ++j)
             {
