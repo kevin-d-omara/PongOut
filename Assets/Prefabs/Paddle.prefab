@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 114000012725024750}
   m_Layer: 9
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c09ad43dd37b540945ac7a911634d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 7
+  width: 0.22
+  height: 1
+  edgeBuffer: 0.05
+  slopeIntercept:
+  - m: 0.5
+    b: -0.2
+  - m: 0.3
+    b: 0
 --- !u!212 &212000010839155170
 SpriteRenderer:
   m_ObjectHideFlags: 1

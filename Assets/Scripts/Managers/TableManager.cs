@@ -18,8 +18,6 @@ public class TableManager : MonoBehaviour
 
     // table & entity dimensions
     public float brickWidth = 0.2f;
-    public float paddleWidth = 0.22f;
-    public float paddleHeight = 1f;
     public float backgroundWidth = 10.24f;
     public float backgroundHeight = 6.2f;
 
@@ -99,12 +97,13 @@ public class TableManager : MonoBehaviour
             placementX -= (brickWidth + rowSpacing) * dir;
         }
 
-        // place paddle
+        // place paddle -> create + resize + move
         GameObject paddle = Instantiate(paddlePrefab);
-        SetObjectSize2D(paddle, paddleWidth, paddleHeight);
+        PaddleController pCtrl = paddle.GetComponent<PaddleController>();
+        SetObjectSize2D(paddle, pCtrl.width, pCtrl.height);
 
         Vector3 paddlePos = paddle.transform.position;
-        float spacing = (paddleSpacing + paddleWidth / 2f) * -1;
+        float spacing = (paddleSpacing + pCtrl.width / 2f) * -1;
         paddlePos.x = placementX + (spacing + rowSpacing) * dir;
 
         paddle.transform.position = paddlePos;
@@ -128,16 +127,16 @@ public class TableManager : MonoBehaviour
     }
 
     // A new ball is created at the center of the table:
-    //      - moving away from last player to score
+    //      - moving towards from last player to score
     //      - aimed randomly, but such that it will not reach the edges of the
     //        player's goal (see inverseBallSpawnDeadzone)
-    public void SpawnBall(PlayerID lastPlayerToScore)
+    public IEnumerator SpawnBall(PlayerID lastPlayerToScore)
     {
         GameObject ball = Instantiate(ballPrefab);
 
-        // ball spawns moving away from last player to score
-        float dir = lastPlayerToScore == PlayerID.One ? 1f : -1f;
-        float speedX = ball.GetComponent<BallController>().speed * dir;
+        // ball spawns towards away from last player to score
+        float dir = lastPlayerToScore == PlayerID.One ? -1f : 1f;
+        float speedX = ball.GetComponent<BallController>().speedX * dir;
 
         // randomize starting angle such that:
         //      - ball will never reach upper/lower fraction of goal specified
@@ -150,6 +149,9 @@ public class TableManager : MonoBehaviour
         float inverseAspect = backgroundHeight / backgroundWidth;
         float maxSpeedY = (1f - deadzone) * inverseAspect * speedX;
         float speedY = Random.Range(-maxSpeedY, maxSpeedY);
+
+        // pause before adding force; this gives players time to get oriented
+        yield return new WaitForSeconds(1f);
 
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(speedX, speedY));
