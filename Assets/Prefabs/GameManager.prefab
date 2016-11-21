@@ -53,6 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f975d590d977f42acb1fcb749d5960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerColor:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.034482956, g: 0, b: 1, a: 1}
 --- !u!114 &114000011491195302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,8 +75,6 @@ MonoBehaviour:
   wallSpacing: 0.1
   paddleSpacing: 0.3
   brickWidth: 0.2
-  paddleWidth: 0.22
-  paddleHeight: 1
   backgroundWidth: 10.24
   backgroundHeight: 6.2
   inverseBallSpawnDeadzone: 4
