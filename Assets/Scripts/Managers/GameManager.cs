@@ -21,15 +21,16 @@ public class GameManager : MonoBehaviour
         public PlayerID playerID;
         public GameObject paddle;
 
-        public Player(PlayerID playerID, GameObject paddle)
+        public Player(PlayerID playerID, GameObject paddle, Color color)
         {
             score = 0;
             this.playerID = playerID;
             this.paddle = paddle;
 
-            paddle.GetComponent<PaddleController>().SetupPaddle(playerID);
+            paddle.GetComponent<PaddleController>().SetupPaddle(playerID, color);
         }
     }
+    public Color[] playerColor = new Color[2];
 
     private Player[] player = new Player[2];
     private TableManager tableManager;
@@ -64,10 +65,10 @@ public class GameManager : MonoBehaviour
         tableManager.SetupScene();
         cameraController.SetViewedObjectTo(tableManager.GetBackground());
 
-        player[0] = new Player(PlayerID.One, tableManager.paddle[0]);
-        player[1] = new Player(PlayerID.Two, tableManager.paddle[1]);
+        player[0] = new Player(PlayerID.One, tableManager.paddle[0], playerColor[0]);
+        player[1] = new Player(PlayerID.Two, tableManager.paddle[1], playerColor[1]);
 
-        tableManager.SpawnBall(lastPlayerToScore);
+        StartCoroutine(tableManager.SpawnBall(lastPlayerToScore));
     }
     
 }
