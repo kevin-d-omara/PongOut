@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public enum PlayerID { One = 1, Two = 2 };
@@ -17,15 +19,24 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;  // singlton GameManager
     public class Player
     {
-        public int score;
         public PlayerID playerID;
         public GameObject paddle;
+        public Text scoreText;
+        public int Score
+        {
+            get { return score; }
+            set { score = value; scoreText.text = String.Format("{0,2:D2}", value); }
+        }
+        private int score;
 
         public Player(PlayerID playerID, GameObject paddle, Color color)
         {
-            score = 0;
             this.playerID = playerID;
             this.paddle = paddle;
+
+            UIController ui = FindObjectOfType<UIController>();
+            this.scoreText = ui.playerScoreText[(int)playerID - 1];
+            Score = 0;
 
             paddle.GetComponent<PaddleController>().SetupPaddle(playerID, color);
         }
@@ -91,9 +102,9 @@ public class GameManager : MonoBehaviour
 
         Destroy(ball);
         --ballCount;
-        player[(int)lastPlayerToScore - 1].score += 1;
+        player[(int)lastPlayerToScore - 1].Score += 1;
 
-        if (player[0].score >= pointsToWin || player[1].score >= pointsToWin)
+        if (player[0].Score >= pointsToWin || player[1].Score >= pointsToWin)
         {
             Debug.Log("Game Over!");
         }

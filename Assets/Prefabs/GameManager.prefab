@@ -56,6 +56,9 @@ MonoBehaviour:
   playerColor:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.034482956, g: 0, b: 1, a: 1}
+  scoreText:
+  - {fileID: 114000010612925064, guid: ee6a8edf5acc8f044a663b057986eda9, type: 2}
+  - {fileID: 114000013863672844, guid: 5da30c0a08d8fc348b36eac71b419969, type: 2}
   pointsToWin: 10
 --- !u!114 &114000011491195302
 MonoBehaviour:
