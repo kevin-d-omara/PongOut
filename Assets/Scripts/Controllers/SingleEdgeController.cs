@@ -11,11 +11,11 @@ public class SingleEdgeController : MonoBehaviour
     {
         float dir = (side == SideTB.Top) ? 1f : -1f;
 
-        Vector2[] points = gameObject.GetComponent<EdgeCollider2D>().points;
+        Vector2[] points = GetComponent<EdgeCollider2D>().points;
         points[0].x = -halfWidth;
         points[0].y = halfHeight * dir;
         points[1].x = halfWidth;
         points[1].y = halfHeight * dir;
-        gameObject.GetComponent<EdgeCollider2D>().points = points;
+        GetComponent<EdgeCollider2D>().points = points;
     }
 }

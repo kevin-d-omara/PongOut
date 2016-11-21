@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
     private TableManager tableManager;
     private CameraController cameraController;
 
+    [SerializeField]
+    private int pointsToWin = 10;
     private PlayerID lastPlayerToScore = PlayerID.One;
+    private int ballCount = 0;
 
     void Awake()
     {
@@ -50,6 +53,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);        // all other instances get destroyed
         }
         DontDestroyOnLoad(gameObject);  // preserve parent GameObject to preserve the singleton
+    }
+
+    private void OnEnable()
+    {
+        GoalController.OnGoalScored += OnGoalScored;
+    }
+
+    private void OnDisable()
+    {
+        GoalController.OnGoalScored -= OnGoalScored;
     }
 
     void Start()
@@ -69,6 +82,26 @@ public class GameManager : MonoBehaviour
         player[1] = new Player(PlayerID.Two, tableManager.paddle[1], playerColor[1]);
 
         StartCoroutine(tableManager.SpawnBall(lastPlayerToScore));
+        ++ballCount;
     }
     
+    private void OnGoalScored(GameObject ball)
+    {
+        lastPlayerToScore = ball.transform.position.x > 0 ? PlayerID.One : PlayerID.Two;
+
+        Destroy(ball);
+        --ballCount;
+        player[(int)lastPlayerToScore - 1].score += 1;
+
+        if (player[0].score >= pointsToWin || player[1].score >= pointsToWin)
+        {
+            Debug.Log("Game Over!");
+        }
+
+        if (ballCount < 1)
+        {
+            StartCoroutine(tableManager.SpawnBall(lastPlayerToScore));
+            ++ballCount;
+        }
+    }
 }

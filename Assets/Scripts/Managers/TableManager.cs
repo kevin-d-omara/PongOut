@@ -24,6 +24,7 @@ public class TableManager : MonoBehaviour
     // fraction of the goal which will not be targetted during a ball spawn
     // i.e. top & bottom 1/6th
     public float inverseBallSpawnDeadzone = 6f;
+    public float ballSpawnDelay = 1f;
 
     // prefabs
     public GameObject brickPrefab;
@@ -32,6 +33,7 @@ public class TableManager : MonoBehaviour
     public GameObject ballPrefab;
     public GameObject backgroundPrefab;
     public GameObject singleEdgePrefab;
+    public GameObject goalPrefab;
 
     private GameObject background;
     public GameObject GetBackground() { return background; }
@@ -53,6 +55,12 @@ public class TableManager : MonoBehaviour
         topWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Top);
         GameObject botWall = Instantiate(singleEdgePrefab);
         botWall.GetComponent<SingleEdgeController>().FitTo(halfWidth, halfHeight, SideTB.Bottom);
+
+        // setup left/right goals
+        GameObject leftGoal = Instantiate(goalPrefab);
+        leftGoal.GetComponent<GoalController>().FitTo(halfWidth, backgroundHeight, SideLR.Left);
+        GameObject rightGoal = Instantiate(goalPrefab);
+        rightGoal.GetComponent<GoalController>().FitTo(halfWidth, backgroundHeight, SideLR.Right);
 
         // setup bricks for both players
         paddle[0] = LayBrickSetAndPaddle(SideLR.Left);
@@ -151,7 +159,7 @@ public class TableManager : MonoBehaviour
         float speedY = Random.Range(-maxSpeedY, maxSpeedY);
 
         // pause before adding force; this gives players time to get oriented
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(ballSpawnDelay);
 
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(speedX, speedY));

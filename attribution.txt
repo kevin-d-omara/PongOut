@@ -15,3 +15,8 @@ File:   PaddleController.cs
 Extent: In function Move(), the idea to contatenate "Vertical" + (int)playerID.
 Source: Unity "Tanks tutorial"
 Link:   https://unity3d.com/learn/tutorials/projects/tanks-tutorial/tank-creation-control?playlist=20081
+
+File:   GoalController.cs
+Extent: Publish/subscribe format & idea
+Source: Unity "Events" tutorial
+Link:   https://unity3d.com/learn/tutorials/topics/scripting/events?playlist=17117

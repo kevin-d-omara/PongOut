@@ -56,6 +56,7 @@ MonoBehaviour:
   playerColor:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.034482956, g: 0, b: 1, a: 1}
+  pointsToWin: 10
 --- !u!114 &114000011491195302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +79,7 @@ MonoBehaviour:
   backgroundWidth: 10.24
   backgroundHeight: 6.2
   inverseBallSpawnDeadzone: 4
+  ballSpawnDelay: 1
   brickPrefab: {fileID: 1000011783672718, guid: 05fb66c84b04add408b5a8495a0e219c,
     type: 2}
   powerupBrickPrefab: {fileID: 0}
@@ -88,6 +90,7 @@ MonoBehaviour:
     type: 2}
   singleEdgePrefab: {fileID: 1000011383623874, guid: 048a2480c17c7e742b65ea80df126d1e,
     type: 2}
+  goalPrefab: {fileID: 1000013562705812, guid: 8efee7f555278284c9b5f19e3f1f831c, type: 2}
   paddle:
   - {fileID: 0}
   - {fileID: 0}
