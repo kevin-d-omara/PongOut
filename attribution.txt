@@ -20,3 +20,8 @@ File:   GoalController.cs
 Extent: Publish/subscribe format & idea
 Source: Unity "Events" tutorial
 Link:   https://unity3d.com/learn/tutorials/topics/scripting/events?playlist=17117
+
+File:   PauseController.cs
+Extent: Entire file except for "pauseKey" list
+Source: Unity Community Forums
+Link:   http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html
