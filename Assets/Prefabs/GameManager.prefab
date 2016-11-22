@@ -56,7 +56,7 @@ MonoBehaviour:
   playerColor:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.034482956, g: 0, b: 1, a: 1}
-  pointsToWin: 10
+  pointsToWin: 1
 --- !u!114 &114000011491195302
 MonoBehaviour:
   m_ObjectHideFlags: 1

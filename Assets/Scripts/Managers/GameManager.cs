@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     }
     public Color[] playerColor = new Color[2];
 
+    public delegate void GameOver();
+    public static event GameOver OnGameOver;
+
     private Player[] player = new Player[2];
     private TableManager tableManager;
     private CameraController cameraController;
@@ -91,7 +94,11 @@ public class GameManager : MonoBehaviour
 
         if (player[0].Score >= pointsToWin || player[1].Score >= pointsToWin)
         {
-            Debug.Log("Game Over!");
+            if (OnGameOver != null)
+            {
+                OnGameOver();
+            }
+            return;
         }
 
         if (ballCount < 1)

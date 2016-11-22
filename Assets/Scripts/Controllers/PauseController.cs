@@ -8,6 +8,16 @@ public class PauseController : MonoBehaviour
 
     private bool isPaused = false;
 
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += PauseGame;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= PauseGame;
+    }
+
     private void Update()
     {
         if (isPaused)
@@ -16,8 +26,7 @@ public class PauseController : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    Time.timeScale = 1f;    // resume game
-                    isPaused = false;
+                    ResumeGame();
                 }
             }
         }
@@ -27,10 +36,26 @@ public class PauseController : MonoBehaviour
             {
                 if (Input.GetKeyDown(key))
                 {
-                    Time.timeScale = 0f;    // pause game
-                    isPaused = true;
+                    PauseGame();
                 }
             }
         }
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
+    private void OnDestroy()
+    {
+        ResumeGame();
     }
 }
