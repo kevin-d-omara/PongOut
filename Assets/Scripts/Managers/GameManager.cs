@@ -16,7 +16,6 @@ public enum PlayerID { One = 1, Two = 2 };
  */
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;  // singlton GameManager
     public class Player
     {
         public PlayerID playerID;
@@ -51,20 +50,6 @@ public class GameManager : MonoBehaviour
     private int pointsToWin = 10;
     private PlayerID lastPlayerToScore = PlayerID.One;
     private int ballCount = 0;
-
-    void Awake()
-    {
-        // enforce singleton pattern for GameManager
-        if (instance == null)
-        {
-            instance = this;            // first GameManager instance becomes the singleton
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);        // all other instances get destroyed
-        }
-        DontDestroyOnLoad(gameObject);  // preserve parent GameObject to preserve the singleton
-    }
 
     private void OnEnable()
     {
