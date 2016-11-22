@@ -9,8 +9,6 @@ public class PaddleController : MonoBehaviour
     public float height = 1f;
     public float edgeBuffer = 0.05f;
 
-    private PlayerID playerID;
-
     [Serializable]
     public class SlopeIntercept
     {
@@ -19,7 +17,9 @@ public class PaddleController : MonoBehaviour
         public SlopeIntercept(float m, float b) { this.m = m; this.b = b; }
     }
     public SlopeIntercept[] slopeIntercept = new SlopeIntercept[2];
-    
+
+    private PlayerID playerID;
+
     public void SetupPaddle(PlayerID playerID, Color color)
     {
         this.playerID = playerID;
