@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using Random = UnityEngine.Random;
 using UnityEngine.UI;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 public enum PlayerID { One = 1, Two = 2 };
 
@@ -16,6 +17,10 @@ public enum PlayerID { One = 1, Two = 2 };
  */
 public class GameManager : MonoBehaviour
 {
+    public delegate void BallPowerup(string powerup);
+    public static event BallPowerup OnBallPowerup;
+    public List<string> ballPowerups;
+
     public class Player
     {
         public PlayerID playerID;
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         }
     }
     public Color[] playerColor = new Color[2];
+    public float powerupFrequency = 5f;     // time between powerups
+    public float powerupVariance = 2f;      // +- time delta on ^
 
     public delegate void GameOver();
     public static event GameOver OnGameOver;
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
     private int pointsToWin = 10;
     private PlayerID lastPlayerToScore = PlayerID.One;
     private int ballCount = 0;
+    private float powerupTimer;
 
     private void OnEnable()
     {
@@ -82,8 +90,23 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(tableManager.SpawnBall(lastPlayerToScore));
         ++ballCount;
+        ResetPowerupTimer();
     }
-    
+
+    private void Update()
+    {
+        powerupTimer -= Time.deltaTime;
+        if (powerupTimer < 0f)
+        {
+            if (OnBallPowerup != null)
+            {
+                int index = ballPowerups.Count;
+                OnBallPowerup(ballPowerups[Random.Range(0, index)]);
+            }
+            ResetPowerupTimer();
+        }
+    }
+
     private void OnGoalScored(GameObject ball)
     {
         lastPlayerToScore = ball.transform.position.x > 0 ? PlayerID.One : PlayerID.Two;
@@ -106,5 +129,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(tableManager.SpawnBall(lastPlayerToScore));
             ++ballCount;
         }
+    }
+
+    private void ResetPowerupTimer()
+    {
+        powerupTimer = powerupFrequency + Random.Range(-powerupVariance, powerupVariance);
     }
 }
