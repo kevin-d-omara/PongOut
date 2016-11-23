@@ -1,3 +1,5 @@
+Code ===========================================================================
+
 Note: I completed 1.5 of Unity's "Learn Tutorials":
         - 2D UFO tutorial (9/9)
         - 2D Roguelike tutorial (6/14)
@@ -25,3 +27,40 @@ File:   PauseController.cs
 Extent: Entire file except for "pauseKey" list
 Source: Unity Community Forums
 Link:   http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html
+
+Audio ==========================================================================
+    File: WallBounce.mp3
+    Original Name: Mario_Jumping-Mike_Koenig-989896458.mp3
+    Creator: Mike Koenig
+    Copyright: License: Attribution 3.0 (https://creativecommons.org/licenses/by/3.0/us/)
+    Link: http://soundbible.com/1601-Mario-Jumping.html
+
+    File: DeepBassBounce.wav
+    Original Name: 349031__fabzowicz__bass-amp-techno-kick.wav
+    Creator: Fabzowicz (freesound.org)
+    Copyright: CC 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+    Link: https://www.freesound.org/people/Fabzowicz/sounds/349031/
+    
+    File: GameOver.wav
+    Original Name: 336076__snapper4298__credits5.wav
+    Creator: Snapper4298 (freesound.org)
+    Copyright: CC BY-NC 3.0 (https://creativecommons.org/licenses/by-nc/3.0/)
+    Link: https://www.freesound.org/people/Snapper4298/sounds/336076/
+
+    File: InGame.wav
+    Original Name: 348988__timbre__rotating-remix-of-tayo123-s-freesound-130949.flac
+    Creator: Timbre (freesound.org)
+    Copyright: CC BY-NC 3.0 (https://creativecommons.org/licenses/by-nc/3.0/)
+    Link: https://www.freesound.org/people/Timbre/sounds/348988/
+    
+    File: Menu.wav
+    Original Name: 349366__zagi2__zorca-trance-gate-intro.wav
+    Creator: zagi2 (freesound.org)
+    Copyright: CC BY-NC 3.0 (https://creativecommons.org/licenses/by-nc/3.0/)
+    Link: https://www.freesound.org/people/zagi2/sounds/349366/
+    
+    File: PointScored.wav
+    Original Name: 345299__scrampunk__okay.wav
+    Creator: Scrampunk (freesound.org)
+    Copyright: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+    Link: https://www.freesound.org/people/Scrampunk/sounds/344696/
