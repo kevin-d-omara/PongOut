@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
         BrickController.OnBrickDestroyed -= PlayDeepBassBounce;
     }
 
-    private void PlayMenu()
+    private void PlayMenu()                                                     // TODO: use StartCoroutine() w/ yield return WaitForFixedUpdate + Time.deltaTime + lerp to fade out
     {
         PlaySong("Menu");
     }
