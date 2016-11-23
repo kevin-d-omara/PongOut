@@ -31,7 +31,7 @@ public class BallController : MonoBehaviour
         else if (powerup == "Accelerate")
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.AddForce(new Vector2(Random.value * speedX, 0f));
+            rb.AddForce(new Vector2(Random.value * speedX, 0f));                // TODO: only accelerates to the right!!
         }
         else
         {
