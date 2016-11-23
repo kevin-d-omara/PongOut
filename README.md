@@ -37,3 +37,10 @@ Controls:
 
     Move Up - 'I'
     Move Down - 'I'
+    
+##### Pause
+
+    'escape'
+    'enter/return'
+    'space bar'
+    'p'
