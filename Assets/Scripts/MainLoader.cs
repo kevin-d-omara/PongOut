@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Loader : MonoBehaviour
+public class MainLoader : MonoBehaviour
 {
     public GameManager gameManager; // GameManager prefab to instantiate
 
