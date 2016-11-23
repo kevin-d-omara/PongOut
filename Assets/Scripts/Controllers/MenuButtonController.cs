@@ -8,6 +8,9 @@ public class MenuButtonController : MonoBehaviour
 {
     public Dictionary<string, GameObject> pages = new Dictionary<string, GameObject>();
 
+    public delegate void PlayGame();
+    public static event PlayGame OnPlayGame;
+
     private void Start()
     {
         foreach (Transform child in transform)
@@ -30,6 +33,10 @@ public class MenuButtonController : MonoBehaviour
     public void PlayNewGame()
     {
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        if (OnPlayGame != null)
+        {
+            OnPlayGame();
+        }
     }
 
     public void QuitGame()

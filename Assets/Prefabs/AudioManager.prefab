@@ -51,3 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f097f4163bff2b54daf235f23e3a6657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menu: {fileID: 8300000, guid: 4987083d7ad29e64e82257809d4c9447, type: 3}
+  inGame: {fileID: 8300000, guid: 263e8af083130e34ca568b5c5fad83e3, type: 3}
+  gameOver: {fileID: 8300000, guid: 6202cf2b98f81464393e9b520b0445fe, type: 3}
+  pointScored: {fileID: 8300000, guid: bcfcf1f48cff0624b96a7c87a7cdb792, type: 3}
+  wallBounce: {fileID: 8300000, guid: 75ce695d322a52e479de39c28a82cc7d, type: 3}
+  deepBassBounce: {fileID: 8300000, guid: 7c9eef14663ca9141bb0ca59fffbcb53, type: 3}
+  bassBouncePitch: 2

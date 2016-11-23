@@ -28,6 +28,11 @@ Extent: Entire file except for "pauseKey" list
 Source: Unity Community Forums
 Link:   http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html
 
+File:   AudioManager.cs
+Extent: AddAudio() function
+Source: Unity Community Forums
+Link:   http://answers.unity3d.com/questions/240468/how-to-play-multiple-audioclips-from-the-same-obje.html
+
 Audio ==========================================================================
     File: WallBounce.mp3
     Original Name: Mario_Jumping-Mike_Koenig-989896458.mp3
