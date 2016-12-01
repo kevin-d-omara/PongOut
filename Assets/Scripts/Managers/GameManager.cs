@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 
 public enum PlayerID { One = 1, Two = 2 };
+public enum BallPowerup { Rainbow, Jink, Boost, RetroBoost};
 
 /* GameManager handles
  *      - scene setup (via TableManager)
@@ -17,9 +18,9 @@ public enum PlayerID { One = 1, Two = 2 };
  */
 public class GameManager : MonoBehaviour
 {
-    public delegate void BallPowerup(string powerup);
-    public static event BallPowerup OnBallPowerup;
-    public List<string> ballPowerups;
+    public delegate void ActivateBallPowerup(BallPowerup powerup);
+    public static event ActivateBallPowerup OnActivateBallPowerup;
+    public List<BallPowerup> ballPowerups;
 
     public class Player
     {
@@ -98,10 +99,10 @@ public class GameManager : MonoBehaviour
         powerupTimer -= Time.deltaTime;
         if (powerupTimer < 0f)
         {
-            if (OnBallPowerup != null)
+            if (OnActivateBallPowerup != null)
             {
                 int index = ballPowerups.Count;
-                OnBallPowerup(ballPowerups[Random.Range(0, index)]);
+                OnActivateBallPowerup(ballPowerups[Random.Range(0, index)]);
             }
             ResetPowerupTimer();
         }

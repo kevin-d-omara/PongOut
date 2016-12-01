@@ -53,14 +53,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f975d590d977f42acb1fcb749d5960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPowerups:
-  - Rainbow
-  - Jink
-  - Accelerate
+  ballPowerups: 00000000010000000200000003000000
   playerColor:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.034482956, g: 0, b: 1, a: 1}
-  powerupFrequency: 1
+  powerupPeriod: 2
   powerupVariance: 0
   pointsToWin: 10
 --- !u!114 &114000011491195302
