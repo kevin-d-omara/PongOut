@@ -8,6 +8,14 @@ public class PauseController : MonoBehaviour
 
     private bool isPaused = false;
 
+    private GameObject menuButton;
+
+    private void Awake()
+    {
+        menuButton = transform.Find("Menu").gameObject;
+        menuButton.SetActive(false);
+    }
+
     private void OnEnable()
     {
         GameManager.OnGameOver += PauseGame;
@@ -27,6 +35,7 @@ public class PauseController : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     ResumeGame();
+                    menuButton.SetActive(false);
                 }
             }
         }
@@ -37,6 +46,7 @@ public class PauseController : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     PauseGame();
+                    menuButton.SetActive(true);
                 }
             }
         }
