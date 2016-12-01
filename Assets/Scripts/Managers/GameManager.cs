@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public Color[] playerColor = new Color[2];
-    public float powerupFrequency = 5f;     // time between powerups
+    public float powerupPeriod = 5f;     // time between powerups
     public float powerupVariance = 2f;      // +- time delta on ^
 
     public delegate void GameOver();
@@ -133,6 +133,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetPowerupTimer()
     {
-        powerupTimer = powerupFrequency + Random.Range(-powerupVariance, powerupVariance);
+        powerupTimer = powerupPeriod + Random.Range(-powerupVariance, powerupVariance);
     }
 }
