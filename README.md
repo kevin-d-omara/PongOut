@@ -51,8 +51,8 @@ Customization:
 Currently, all customization must be done within the Unity editor. Select the file "Assets/Prefabs/GameManager.prefab" in the Unity Inspector. Exciting parameters to tweak include:
 
 **Game Manager**
-- Powerup Frequency (how often powerups occur)
-- Powerup Variance (+/- value to affect Powerup Frequency; i.e. if Variance=0.5, then Frequency = 0.5 to 1.5)
+- Powerup Period (how often powerups occur)
+- Powerup Variance (+/- value to affect Powerup Period; i.e. if Variance=0.5, then Powerup = 0.5 to 1.5)
 - Points To Win
 
 **Table Manager**
