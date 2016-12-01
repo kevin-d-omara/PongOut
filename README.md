@@ -3,7 +3,7 @@
 What is PongOut?
 ==========
 
-PongOut is a hybrid of the two classic games Pong and Breakout, with the added fun of *powerups*!
+PongOut is a hybrid between the classics Pong and Breakout, with the added fun of *powerups*!
 
 
 How to Run
