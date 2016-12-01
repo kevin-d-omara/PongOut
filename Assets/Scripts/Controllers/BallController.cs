@@ -6,12 +6,12 @@ public class BallController : MonoBehaviour
     public float speedX = 100f;
     public float speedY = 100f;
 
+    // default velocity.x after single application of
+    // rb.AddForce(new Vector2(speedX, speedY))
     private float defaultVelocityX;
 
     private void Awake()
     {
-        // default velocity.x after single application of
-        // rb.AddForce(new Vector2(speedX, speedY))
         defaultVelocityX = 0.02f * speedX;
     }
 
