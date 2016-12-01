@@ -25,7 +25,8 @@ edge. A brick is destroyed each time it is struck by the ball.
 
 1. **Rainbow** - ball color is randomized
 2. **Jink** - ball dashes up or down
-3. **Accelerate** - ball boosts forward
+3. **Boost** - ball boosts forward
+3. **Retro Boost** - ball boosts in reverse
 
 • Hint: you can direct the ball's rebound angle based on it's distance from the
 center of your paddle. The further away from the center, the wider the rebound
@@ -42,8 +43,8 @@ Controls:
 
 ##### Player 2:
 
-    Move Up - 'I'
-    Move Down - 'I'
+    Move Up - '↑'
+    Move Down - '↓'
     
 ##### Pause
 
@@ -57,14 +58,14 @@ Customization:
 Currently, all customization must be done within the Unity editor. Select the file "Assets/Prefabs/GameManager.prefab" in the Unity Inspector. Exciting parameters to tweak include:
 
 **Game Manager**
-- Powerup Period (how often powerups occur)
-- Powerup Variance (+/- value to affect Powerup Period; i.e. if Variance=0.5, then Period = 0.5 to 1.5)
-- Points To Win
+- Powerup Period (how often powerups occur; default 5 seconds)
+- Powerup Variance (+/- value to affect Powerup Period; i.e. if Variance=0.5, then Period = 0.5 to 1.5; default 1 second)
+- Points To Win (default 10 points)
 
 **Table Manager**
-- Num Rows (# bricks width-wise; i.e. Num Rows = 2 in the default game)
-- Num Cols (# bricks height-wise; i.e. Num Cols = 7 in the default game)
-- Background Width (width of play area)
-- Background Height (height of play area)
+- Num Rows (# bricks width-wise; i.e. default 2 rows of bricks)
+- Num Cols (# bricks height-wise; i.e. default 7 bricks per row)
+- Background Width (width of play area; default 10.24 Unity units)
+- Background Height (height of play area; default 6.2 Unity units)
 
 ![Ingame Wide](/../screenshots/ingame-wide.png?raw=true "Example customization. Try this with sudden death (Points To Win = 1)!")
