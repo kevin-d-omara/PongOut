@@ -5,6 +5,12 @@ What is PongOut?
 
 PongOut is a hybrid of the two classic games Pong and Breakout, with the added fun of *powerups*!
 
+
+How to Run
+==========
+
+[Download the latest release for your operating system.](https://github.com/kevin-d-omara/PongOut/releases/latest "https://github.com/kevin-d-omara/PongOut/releases/latest") Then unzip the file and enjoy!
+
 Instructions:
 ==========
 
