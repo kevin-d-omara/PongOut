@@ -13,22 +13,20 @@ How to Run
 
 Instructions:
 ==========
+- Players each control a paddle which moves up and down. Use your paddle to
+deflect the ball towards your opponent. You score a point each time the ball
+goes off your opponent's table edge.
+- Players also own a set of bricks. These are your first line of defense from
+letting the ball off your table edge. A brick is destroyed each time it is
+struck by the ball.
+- Roughly every 5 seconds a random powerup is activated, including:
 
-• Players each control a paddle which moves up and down and a set of bricks. Use
-your paddle to deflect the ball towards your opponent. You score a point each
-time the ball goes off your opponent's table edge.
+  - **Rainbow** - ball color is randomized
+  - **Jink** - ball dashes up or down
+  - **Boost** - ball boosts forward
+  - **Retro Boost** - ball boosts in reverse
 
-• The bricks are your first line of defense from letting the ball off your table
-edge. A brick is destroyed each time it is struck by the ball.
-
-• Powerups are constantly affecting the ball, including:
-
-1. **Rainbow** - ball color is randomized
-2. **Jink** - ball dashes up or down
-3. **Boost** - ball boosts forward
-3. **Retro Boost** - ball boosts in reverse
-
-• Hint: you can direct the ball's rebound angle based on it's distance from the
+- **Hint:** you can direct the ball's rebound angle based on it's distance from the
 center of your paddle. The further away from the center, the wider the rebound
 angle.
 
